@@ -1,6 +1,7 @@
 // Copyright (c) Mysten Labs, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
+<<<<<<< HEAD
 import {
 	JsonRpcProvider,
 	localnetConnection,
@@ -9,8 +10,14 @@ import {
 	TransactionBlock,
 } from '@mysten/sui.js';
 import {CLOCK, CREATION_FEE, getPoolInfoByRecords, MODULE_CLOB, MODULE_CUSTODIAN, PACKAGE_ID} from './utils';
+=======
+import { TransactionArgument, TransactionBlock } from '@mysten/sui.js/transactions';
+import { normalizeSuiObjectId } from '@mysten/sui.js/utils';
+import { getPoolInfoByRecords } from './utils';
+>>>>>>> origin/main
 import { PoolInfo, Records } from './utils';
 import { defaultGasBudget } from './utils';
+import { SuiClient, getFullnodeUrl } from '@mysten/sui.js/client';
 
 export type smartRouteResult = {
 	maxSwapTokens: number;
@@ -23,11 +30,25 @@ export type smartRouteResultWithExactPath = {
 };
 
 export class DeepBook_sdk {
+<<<<<<< HEAD
 	public provider: JsonRpcProvider;
 	public gasBudget: number;
 	public records: Records;
 
 	constructor(provider: JsonRpcProvider = new JsonRpcProvider(localnetConnection), gasBudget: number, records: Records) {
+=======
+	public provider: SuiClient;
+	public currentAddress: string;
+	public gasBudget: number;
+	public records: Records;
+
+	constructor(
+		provider: SuiClient = new SuiClient({ url: getFullnodeUrl('localnet') }),
+		currentAddress: string,
+		gasBudget: number,
+		records: Records,
+	) {
+>>>>>>> origin/main
 		this.provider = provider;
 		this.gasBudget = gasBudget;
 		this.records = records;
